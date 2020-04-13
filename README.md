@@ -1,7 +1,11 @@
 
-## 相关项目
+## 相關项目
 
 - [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+
+## 簡述
+以vue-element-admin為基本範例，結合ELEMENT-UI和VUE-CLI，開發出的後台管理網站，以routers去控制後台的主要架構，並依照每個帳戶的角色動態生成router
+
 
 ## Build Setup
 
@@ -9,37 +13,28 @@
 
 
 # 安装依赖
-npm install
+yarn install
 
 
 # 启动服务
-npm run dev
+yarn serve
 ```
 
-## 发布
+## 發布
 
 ```bash
 # 构建测试环境
-npm run build:stage
+yarn build:stage
 
 # 构建生产环境
-npm run build:prod
-```
+yarn build:prod```
 
-## 其它
-
-```bash
-# 预览发布环境效果
-npm run preview
-
-# 预览发布环境效果 + 静态资源分析
-npm run preview -- --report
 
 # 代码格式检查
-npm run lint
+yarn lint
 
-# 代码格式检查并自动修复
-npm run lint -- --fix
+# 自动修复
+yarn lint -- --fix
 ```
 
 # cms-vue
