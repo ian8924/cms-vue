@@ -1,0 +1,24 @@
+.inside_order_way{
+    font-size: 13px;
+    h5{
+        font-size: 15px;
+        margin-top: 15px;
+    }
+    ul, ol {
+        list-style: none;
+        border: medium none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: decimal;
+        margin-top: 5px;
+        margin-left: 25px;
+        li {
+            list-style: upper-alpha;
+            li {
+                list-style: lower-alpha;
+            }
+        }
+    }
+}
