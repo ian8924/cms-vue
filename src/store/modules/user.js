@@ -1,5 +1,5 @@
-import { login, getUserRole } from '@/store/api/user'
-import { get_role_rights } from '@/store/api/permissionManage/permissionManage'
+// import { login, getUserRole } from '@/store/api/user'
+// import { get_role_rights } from '@/store/api/permissionManage/permissionManage'
 import { getCookie, setCookie, removeCookie } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
@@ -56,29 +56,51 @@ const mutations = {
 const actions = {
   // user login
   async LOGIN({ commit, dispatch }, userInfo) {
-    const result = await login(userInfo)
-      .then(res => {
-        commit('SET_TOKEN', res.data.token)
-        setCookie('token', res.data.token)
-        setCookie('userID', res.data.id)
-        return 'Success'
-      })
-      .catch(err => (err.response.status === 500 ? 'fail' : 'error'))
-    return result
+    commit(
+      'SET_TOKEN',
+      'admin-token'
+    )
+    setCookie(
+      'token',
+      'admin-token'
+    )
+    setCookie('userID', 1111)
+    // const result = await login(userInfo)
+    //   .then(res => {
+    //     commit('SET_TOKEN', res.data.token)
+    //     setCookie('token', res.data.token)
+    //     setCookie('userID', res.data.id)
+    //     return 'Success'
+    //   })
+    //   .catch(err => (err.response.status === 500 ? 'fail' : 'error'))
+    // return result
+    return 'Success'
   },
 
   async GET_ROLE_RIGHTS({ state, commit }) {
-    const roleID = state.roleID
-    const response = await get_role_rights(roleID).then(res => res.data)
+    // const roleID = state.roleID
+    // const response = await get_role_rights(roleID).then(res => res.data)
+    const response = [
+      { service: '角色編輯', right: '編輯者' },
+      { service: '用戶編輯', right: '編輯者' },
+      { service: 'EDM', right: '編輯者' },
+      { service: '票卡管理', right: '編輯者' }
+    ]
     commit('CON_ROLES', response)
   },
 
   async GET_USER_ROLE({ commit, state, dispatch }) {
-    const userID = getCookie('userID')
-    const response = await getUserRole(userID).then(res => res.data)
-    commit('SET_ROLE', response.name)
-    commit('SET_ROLE_ID', response.id)
-    await dispatch('GET_ROLE_RIGHTS')
+    // const userID = getCookie(
+    //   'userID'
+    // )
+    commit('SET_ROLE', '管理者')
+    commit('SET_ROLE_ID', 2)
+    // const response = await getUserRole(userID).then(res => res.data)
+    // commit('SET_ROLE', response.name)
+    // commit('SET_ROLE_ID', response.id)
+    await dispatch(
+      'GET_ROLE_RIGHTS'
+    )
     return state.roles
   },
   // user logout
