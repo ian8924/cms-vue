@@ -6,6 +6,7 @@
 ## 簡述
 以vue-element-admin為基本範例，結合ELEMENT-UI和VUE-CLI，開發出的後台管理網站，以routers去控制後台的主要架構，並依照每個帳戶的角色動態生成router
 
+良好的 Vue 架構 , 可作參考
 
 ## Build Setup
 
